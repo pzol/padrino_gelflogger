@@ -1,6 +1,6 @@
 # PadrinoGelflogger
 
-TODO: Write a gem description
+This gem allows logging to Graylog via [Padrino](padrinorb.com)
 
 ## Installation
 
@@ -17,8 +17,14 @@ Or install it yourself as:
     $ gem install padrino_gelflogger
 
 ## Usage
+In your config/boot.rb add something like this:
 
-TODO: Write usage instructions here
+    @@@ruby
+    Padrino.after_load do
+      if %w[acceptance production].include? PADRINO_ENV
+        Padrino.logger = Padrino::GelfLogger.new("graylog-server", 12201, 'wan', :facility => 'AppName', :level => :devel)
+      end
+    end
 
 ## Contributing
 
