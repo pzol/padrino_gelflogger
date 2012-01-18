@@ -1,5 +1,4 @@
-require "padrino_gelflogger/version"
-
-module PadrinoGelflogger
-  # Your code goes here...
-end
+require 'padrino_gelflogger/version'
+require 'gelf'
+require 'padrino-core/logger'
+require 'padrino_gelflogger/gelf_logger'

@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["pz@anixe.pl"]
   gem.description   = %q{Log from Padrino to Graylog2}
   gem.summary       = %q{uses GELF.}
-  gem.homepage      = ""
+  gem.homepage      = "http://github.com/pzol/padrino_gelflogger"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
@@ -14,4 +14,13 @@ Gem::Specification.new do |gem|
   gem.name          = "padrino_gelflogger"
   gem.require_paths = ["lib"]
   gem.version       = PadrinoGelflogger::VERSION
+  gem.add_dependency 'gelf', '>=1.3.2'
+  gem.add_dependency 'padrino-core', '>=0.10.5'
+
+  gem.add_development_dependency 'minitest', '>=2.10.0'
+  gem.add_development_dependency 'minitest-reporters'
+  gem.add_development_dependency 'rr'
+  gem.add_development_dependency 'timecop'
+  gem.add_development_dependency 'rake'
+
 end
