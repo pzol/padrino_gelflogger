@@ -1,6 +1,6 @@
 # PadrinoGelflogger
 
-This gem allows logging to Graylog via [Padrino](padrinorb.com).
+This gem allows logging to [Graylog](http://graylog2.org/) via [Padrino](padrinorb.com).
 
 ## Installation
 
