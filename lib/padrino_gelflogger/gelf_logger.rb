@@ -11,7 +11,7 @@ module Padrino
         devel: 0 
       }
 
-    Padrino::Logger::Levels.each_pair do |name, number|
+    LevelMappings.each_pair do |name, number|
       define_method(name) do |*args|
         if args.size > 1
           bench(*args)
