@@ -10,8 +10,6 @@ require 'timecop'
 
 require 'rr'
 
-
-
 class MockSpec < MiniTest::Spec
    include RR::Adapters::RRMethods
 end
