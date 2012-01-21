@@ -33,10 +33,11 @@ module Padrino
       notify_with_level(gelf_level(level), msg)
     end
     
-    def bench(action, began_at, message, level=:debug, color=:yellow)
-      duration = Time.now - began_at
-      short_message = "%s %0.4fms: %s" % [ action, duration, clean(message.to_s) ]
-      notify_with_level(gelf_level(level), short_message: short_message, _duration: duration, _action: action)
+    def bench(action, began_at, message, level=:debug, color=:yellow, full_message=nil)
+      duration = ((Time.now - began_at) * 1000).to_i
+      short_message = "(%s %dms) - %s" % [ action, duration, clean(message.to_s) ]
+      options = {short_message: short_message, full_message: full_message, _Duration: duration, _Action: action}
+      notify_with_level(gelf_level(level), options)
     end
     
     private

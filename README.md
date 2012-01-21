@@ -25,6 +25,10 @@ In your config/boot.rb add something like this:
       end
     end
 
+You can manually log performance stats using `logger.bench`, for example:
+
+    bench("action", Time.local(2012, 12, 20, 20, 12, 00), "message", level=:debug, color=:yellow, full_message="more info about this run")
+
 
 More information about the parameters can be found at in the  [http://rubydoc.info/github/Graylog2/gelf-rb/master/GELF/Notifier](Graylog2) gem docs. 
 

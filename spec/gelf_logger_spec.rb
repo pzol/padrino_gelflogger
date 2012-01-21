@@ -39,9 +39,16 @@ describe Padrino::GelfLogger do
   end
 
   it '#bench' do
-    mock(@logger).notify_with_level(0, {short_message: 'action 20.0000ms: message', _duration: 20.0, _action: 'action'})
-    Timecop.freeze(Time.local(2012, 12, 20, 20, 12, 20)) do
-      @logger.bench("action", Time.local(2012, 12, 20, 20, 12, 00), "message", level=:debug, color=:yellow)
+    mock(@logger).notify_with_level(0, {short_message: '(action 1000ms) - short_message', full_message: nil, _Duration: 1000, _Action: 'action'})
+    Timecop.freeze(Time.local(2012, 12, 20, 20, 12, 1)) do
+      @logger.bench("action", Time.local(2012, 12, 20, 20, 12, 00), "short_message", level=:debug, color=:yellow)
+    end
+  end
+
+  it '#bench with optional full_message' do
+    mock(@logger).notify_with_level(0, {short_message: '(action 1000ms) - message', full_message: "full", _Duration: 1000, _Action: 'action'})
+    Timecop.freeze(Time.local(2012, 12, 20, 20, 12, 1)) do
+      @logger.bench("action", Time.local(2012, 12, 20, 20, 12, 00), "message", level=:debug, color=:yellow, full_message="full")
     end
   end
 
