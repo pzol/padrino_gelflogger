@@ -29,6 +29,13 @@ You can manually log performance stats using `logger.bench`, for example:
 
     bench("action", Time.local(2012, 12, 20, 20, 12, 00), "message", level=:debug, color=:yellow, full_message="more info about this run")
 
+## GelfExceptionLogger
+In order to log exceptions to [Graylog](http://graylog2.org/) add this to your app.rb:
+
+    register Padrino::GelfExceptionLogger 
+
+For this to work, you __must__ set the Padrino.logger to the Padrino::GelfLogger first!
+
 
 More information about the parameters can be found at in the  [http://rubydoc.info/github/Graylog2/gelf-rb/master/GELF/Notifier](Graylog2) gem docs. 
 
