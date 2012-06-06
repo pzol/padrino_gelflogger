@@ -40,6 +40,11 @@ describe Padrino::GelfLogger do
     logger.devel "test"
   end
 
+  %w{fatal error warn info debug devel}.each do |supported_level|
+    it "supports ##{supported_level}?" do
+      assert logger.public_send("#{supported_level}?")
+    end
+  end
 
   it '#bench' do
     mock(logger).notify_with_level(0, {short_message: '(action 1000ms) - short_message', full_message: nil, _Duration: 1000, _Action: 'action'})
