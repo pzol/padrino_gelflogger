@@ -19,6 +19,10 @@ module Padrino
           push(args * '', name)
         end
       end
+
+      define_method("#{name}?") do
+        true
+      end
     end
     
     def log(*args)
