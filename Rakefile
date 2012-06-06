@@ -8,3 +8,5 @@ Rake::TestTask.new do |t|
   t.libs << "spec"
   t.verbose = true
 end
+
+task :default => :test
