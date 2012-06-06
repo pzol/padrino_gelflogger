@@ -46,6 +46,11 @@ describe Padrino::GelfLogger do
     end
   end
 
+  it '#<<' do
+    mock(logger).notify_with_level(logger.level, 'test')
+    logger << 'test'
+  end
+
   it '#bench' do
     mock(logger).notify_with_level(0, {short_message: '(action 1000ms) - short_message', full_message: nil, _Duration: 1000, _Action: 'action'})
     Timecop.freeze(Time.local(2012, 12, 20, 20, 12, 1)) do
